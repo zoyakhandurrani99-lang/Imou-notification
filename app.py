@@ -9,6 +9,8 @@ def receive():
     time = datetime.datetime.now()
     print(f"Camera accessed at: {time}")
     print("Data received:", data)
+    real_ip = request.headers.get('X-Forwarded-For', request.remote_addr)
+    print(f"Request from IP: {real_ip}")
     return 'OK', 200
 
 if __name__ == '__main__':
